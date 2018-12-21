@@ -1,9 +1,9 @@
 # Rgy
-Express yourself.
+ :smirk: Express yourself.
 
 **NOTE** - Work in progress. Do not use for anything you care about.
 
-## Getting Started
+## :scroll: Getting Started
 
 Clone
 ```sh
@@ -15,7 +15,7 @@ Import
 const Rgy = require('rgy');
 ```
 
-## Constants - Have some shortcuts.
+## :scroll: Constants - Have some shortcuts.
 
 ### Range(a `Numbers | String`, b `Number | String`)
 > Generate a range of *numbers* or *letters*
@@ -46,7 +46,7 @@ Range("x", "Z"); // RegEx Equivelent: [x-zX-Z]
 ### Numbers
 > Match anything numerical.
 
-## Constants - Write your own.
+## :scroll: Constants - Write your own.
 > You can write your own pluggable character matching rules. A constant must be an `Array` or a `Function` that returns an `Array`.
 
 ### Example
@@ -55,7 +55,7 @@ Range("x", "Z"); // RegEx Equivelent: [x-zX-Z]
 const EmailCharacters = ['.', '_', '@', '-'];
 ```
 
-## Examples
+## :scroll: Examples
 
 ### IPv4 Validation
 ```js
