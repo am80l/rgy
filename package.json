@@ -1,22 +1,13 @@
 {
-  "name": "rgy",
-  "version": "0.0.0",
-  "description": "Yay!",
-  "main": "src/index.js",
+  "name": "reggie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "test": "npm test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/am80l/rgy.git"
-  },
-  "keywords": [
-    "rgy"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/am80l/rgy/issues"
-  },
-  "homepage": "https://github.com/am80l/rgy#readme"
+  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
+  "license": "MIT"
 }
