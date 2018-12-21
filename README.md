@@ -15,10 +15,44 @@ Import
 const Rgy = require('rgy');
 ```
 
-## Write an Expression
+## Constants - Have some shortcuts.
 
+### Range(a `Numbers | String`, b `Number | String`)
+> Generate a range of *numbers* or *letters*
+
+** Numeric Range **
 ```js
+Range(20, 23); // RegEx Equivelent: (20|21|22|23)
+```
 
+** Lower-Case Alphabetical Range **
+```js
+Range("a", "c"); // RegEx Equivelent: [a-c]
+```
+
+** Upper-Case Alphabetical Range **
+```js
+Range("D", "F"); // RegEx Equivelent: [D-F]
+```
+
+** Upper-Case and Lower-Case Alphabetical Range **
+```js
+Range("x", "Z"); // RegEx Equivelent: [x-zX-Z]
+```
+
+### Letters
+> Match anything alphabetical.
+
+### Numbers
+> Match anything numerical.
+
+## Constants - Write your own.
+> You can write your own pluggable character matching rules. A constant must be an `Array` or a `Function` that returns an `Array`.
+
+### Example
+> Match characters that you would find in an email address.
+```js
+const EmailCharacters = ['.', '_', '@', '-'];
 ```
 
 ## Examples
