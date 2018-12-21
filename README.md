@@ -3,7 +3,7 @@ Express yourself.
 
 **NOTE** - Work in progress. Do not use for anything you care about.
 
-## Getting Start
+## Getting Started
 
 Clone
 ```sh
