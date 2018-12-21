@@ -20,22 +20,22 @@ const Rgy = require('rgy');
 ### Range(a `Numbers | String`, b `Number | String`)
 > Generate a range of *numbers* or *letters*
 
-** Numeric Range **
+**Numeric Range**
 ```js
 Range(20, 23); // RegEx Equivelent: (20|21|22|23)
 ```
 
-** Lower-Case Alphabetical Range **
+**Lower-Case Alphabetical Range**
 ```js
 Range("a", "c"); // RegEx Equivelent: [a-c]
 ```
 
-** Upper-Case Alphabetical Range **
+**Upper-Case Alphabetical Range**
 ```js
 Range("D", "F"); // RegEx Equivelent: [D-F]
 ```
 
-** Upper-Case and Lower-Case Alphabetical Range **
+**Upper-Case and Lower-Case Alphabetical Range**
 ```js
 Range("x", "Z"); // RegEx Equivelent: [x-zX-Z]
 ```
