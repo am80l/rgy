@@ -1,0 +1,22 @@
+{
+  "name": "rgy",
+  "version": "0.0.0",
+  "description": "Yay!",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/am80l/rgy.git"
+  },
+  "keywords": [
+    "rgy"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/am80l/rgy/issues"
+  },
+  "homepage": "https://github.com/am80l/rgy#readme"
+}
