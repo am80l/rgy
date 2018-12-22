@@ -10,7 +10,7 @@ If you're like most programmers, at some point in your career you may have come 
 
 ```^(?:(?:(?:0?[13578]|1[02])(\/|-|\.)31)\1|(?:(?:0?[13-9]|1[0-2])(\/|-|\.)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/|-|\.)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\/|-|\.)(?:0?[1-9]|1\d|2[0-8])\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$```
 
-Hopefully the regex is accompanied by a comment explaining the intent and useage of the expression, though the fact is, even the most experienced programmers can have trouble reading and maintaining a regular expression like this, which leads to wasted time trying to understand code that could be better spent on other parts of your application. 
+Hopefully the regex is accompanied by a comment explaining the intent and useage of the expression, though the fact is, even the most experienced programmers can have trouble reading and maintaining a regular expression like this, which leads to wasted time trying to understand code that could be better spent working on other parts of your application. 
 
 ### The solution? Rgy!
 
