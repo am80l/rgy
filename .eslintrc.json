@@ -1,18 +1,4 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "ecmaFeatures": true,
-      "arrowFunctions": true,
-      "classes": true,
-      "sourceType": "module",
-      "templateStrings": true,
-      "jsx": true,
-      "blockBindings": true
-    },
-    "ecmaVersion": 6
-  },
   "extends": "eslint:recommended",
   "env": {
     "browser": true,
