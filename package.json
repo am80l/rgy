@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Nothing to see here for now\" && exit 0"
   },
   "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
   "license": "MIT"
