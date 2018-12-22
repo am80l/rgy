@@ -9,7 +9,8 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"test": "jest --colors",
+		"test": "jest ./tests --colors",
+		"test:dev": "yarn test --verbose --watch",
 		"release": "standard-version"
 	},
 	"author": "Michael Hartmayer <michaelhartmayer@gmail.com>, Austin La",
