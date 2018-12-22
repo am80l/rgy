@@ -1,6 +1,15 @@
+sudo: false
 language: node_js
-
 cache:
   yarn: true
   directories:
     - node_modules
+notifications:
+  email: false
+node_js:
+  - '7'
+  - '6'
+  install:
+  - yarn global
+  before_script:
+  - yarn
