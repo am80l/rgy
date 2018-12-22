@@ -1,47 +1,37 @@
+// helpers
+const multiJoin = require('./helpers/multiJoin');
 const { Start, End } = require('./helpers/constants');
 
-const rgyMatch = parsedRuleSet => match => {};
+// test strategies
+const rgyTest = require('./strategies/rgyTest');
+const rgyReplace = require('./strategies/rgyReplace');
+const rgyMatch = require('./strategies/rgyMatch');
 
-const rgyReplace = parsedRuleSet => replace => {};
-
-const rgyTest = parsedRuleSet => test => RegExp(parsedRuleSet).test(test);
-
-const clean = str => {
-  const badCharacters = '.?:[]()!^$*+\\'
-    .split('')
-    .map(s => `\\${s}`)
-    .join('|');
-
-  return str.replace(RegExp(`(${badCharacters})`, 'g'), '\\$1');
-};
-
-const multiJoin = any => {
-  // string or a number, just return it as a string
-  if (typeof any === 'string' || typeof any === 'number') return clean(any.toString());
-
-  // as an array
-  if (Array.isArray(any)) {
-    let multiJoined = any.reduce((joined, item) => {
-      return [...joined, multiJoin(item)];
-    }, []);
-
-    return multiJoined.join('|');
-  }
-
-  console.log(any);
-
-  // nothing else should be inside any
-  throw Error('{ any } only accepts strings, numbers, and arrays.');
-};
-
+/**
+ * Parses Rgy rules into partial regular expressions.
+ *
+ * @param {String} parsedRule The string to be converted to regex being built up
+ * @param {Object | Symbol} rule The rule to enforce.
+ * @returns {String} A string that represents a partial regular expression.
+ */
 const parseRule = (parsedRule, rule = {}) => {
+  // case: array of sub-rules
+
   // case: start
   if (rule === Start) return parsedRule + '^';
 
   // case: end
   if (rule === End) return parsedRule + '$';
 
-  // @TODO: Sanitize string, none of the rules should have
+  // parse: options
+  if (rule.options) {
+    parsedRule += `(${rule.options
+      .map(option => {
+        if (Array.isArray(option)) return option.reduce(parseRule, '');
+        return parseRule('', option);
+      })
+      .join('|')})`;
+  }
 
   // parse: positive matches
   if (rule.any) parsedRule += `[${multiJoin(rule.any)}]`;
@@ -66,7 +56,7 @@ const Rgy = (rules = []) => {
     match: rgyMatch(parsedRuleSet),
     replace: rgyReplace(parsedRuleSet),
     test: rgyTest(parsedRuleSet),
-    debug: () => parsedRuleSet,
+    debug: () => console.log(parsedRuleSet),
   };
 };
 
