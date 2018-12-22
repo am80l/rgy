@@ -1,10 +1,8 @@
-const clean = str => {
-	const badCharacters = '.?:[]()!^$*+\\'
-		.split('')
-		.map(s => `\\${s}`)
-		.join('|');
+module.exports = str => {
+  const badCharacters = '.?:[]()!^$*+\\'
+    .split('')
+    .map(s => `\\${s}`)
+    .join('|');
 
-	return str.replace(RegExp(`(${badCharacters})`, 'g'), '\\$1');
+  return str.replace(RegExp(`(${badCharacters})`, 'g'), '\\$1');
 };
-
-module.exports = clean;

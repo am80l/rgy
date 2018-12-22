@@ -1,8 +1,11 @@
 const clean = require('../../src/helpers/clean');
+const badCharacters = '.?:[]()!^$*+\\';
 
 describe('clean', () => {
-  // tests base functionality of the range
-  it('Escapes "?"', () => {
-    expect(clean('?')).toEqual('\\?');
+  badCharacters.split('').forEach(char => {
+    it(`Escapes ${char}`, () => {
+      expect(clean(char)).toEqual('\\' + char);
+      console.log('yay! ' + char);
+    });
   });
 });
