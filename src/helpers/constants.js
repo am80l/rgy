@@ -5,13 +5,15 @@ const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const UpperLetters = LowerLetters.map(s => s.toUpperCase());
 const Letters = [...LowerLetters, ...UpperLetters];
 const AlphaNumeric = [...Letters, ...Numbers];
+const Quote = ['"', '\''];
 
 module.exports = {
-	Start,
-	End,
-	Numbers,
-	LowerLetters,
-	UpperLetters,
-	Letters,
-	AlphaNumeric
+  Start,
+  End,
+  Numbers,
+  LowerLetters,
+  UpperLetters,
+  Letters,
+  AlphaNumeric,
+  Quote,
 };

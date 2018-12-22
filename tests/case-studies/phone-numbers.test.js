@@ -74,18 +74,18 @@ const invalid = [
 
 describe('Case Study: Phone Numbers', () => {
   describe('Valid Phone Numbers', () => {
-    valid.forEach(ip => {
-      it(`Correctly tests for - ${ip}`, () => {
-        const test = RgyPhoneNr.test(ip);
+    valid.forEach(nr => {
+      it(`Correctly tests for - ${nr}`, () => {
+        const test = RgyPhoneNr.test(nr);
         expect(test).toBe(true);
       });
     });
   });
 
   describe('Invalid Phone Numbers', () => {
-    invalid.forEach(ip => {
-      it(`Correctly tests for - ${ip}`, () => {
-        const test = RgyPhoneNr.test(ip);
+    invalid.forEach(nr => {
+      it(`Correctly tests for - ${nr}`, () => {
+        const test = RgyPhoneNr.test(nr);
         expect(test).toBe(false);
       });
     });
