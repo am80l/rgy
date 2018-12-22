@@ -14,7 +14,7 @@ Hopefully the regex is accompanied by a comment explaining the intent and useage
 
 ## The solution? Rgy!
 
-Rgy (pronouned reggie) is a small library that helps make your regular expressions more human-readable, is self documenting, and even better, you don't need to know any regex at all to use it.
+Rgy (pronouned reggie) is a small library that helps make your regular expressions more human-readable, self documenting, and even better, you don't need to know any regex at all to use it.
 
 ## :scroll: Getting Started
 
