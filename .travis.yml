@@ -8,7 +8,5 @@ notifications:
   email: false
 node_js:
   - '7'
-  - '6'
-  - '4'
 after_success:
-  - .publish_master.sh
+  - ./publish_master.sh
