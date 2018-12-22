@@ -1,16 +1,17 @@
 {
-  "name": "reggie",
-  "version": "0.0.0",
-  "description": "",
-  "main": "src/rgy.js",
-  "dependencies": {
-    "standard-version": "^4.4.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Nothing to see here for now\" && exit 0",
-    "release": "standard-version"
-  },
-  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>, Austin La",
-  "license": "MIT"
+	"name": "reggie",
+	"version": "0.0.0",
+	"description": "",
+	"main": "src/rgy.js",
+	"dependencies": {
+		"jest": "^23.6.0",
+		"standard-version": "^4.4.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "jest --colors",
+		"release": "standard-version"
+	},
+	"author": "Michael Hartmayer <michaelhartmayer@gmail.com>, Austin La",
+	"license": "MIT"
 }

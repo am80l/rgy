@@ -1,36 +1,37 @@
 {
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "ecmaFeatures": true,
-      "arrowFunctions": true,
-      "classes": true,
-      "sourceType": "module",
-      "templateStrings": true,
-      "jsx": true,
-      "blockBindings": true
-    },
-    "ecmaVersion": 6
-  },
-  "extends": "eslint:recommended",
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true,
-    "mocha": true
-  },
-  "rules": {
-    "key-spacing": [1, { "afterColon": true }],
-    "semi": [2, "always"],
-    "comma-dangle": [2, "always-multiline"],
-    "indent": [2, 2, { "SwitchCase": 1 }],
-    "jsx-quotes": [2, "prefer-single"],
-    "no-console": 0,
-    "no-unreachable": 2,
-    "valid-typeof": 2,
-    "quotes": [2, "single", { "allowTemplateLiterals": true }],
-    "no-var": 2,
-    "object-curly-spacing": [2, "always"],
-    "space-before-blocks": [2, "always"]
-  }
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"ecmaFeatures": true,
+			"arrowFunctions": true,
+			"classes": true,
+			"sourceType": "module",
+			"templateStrings": true,
+			"jsx": true,
+			"blockBindings": true
+		},
+		"ecmaVersion": 6
+	},
+	"extends": "eslint:recommended",
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"mocha": true
+	},
+	"rules": {
+		"brace-style": ["error", "stroustrup"],
+		"key-spacing": [1, { "afterColon": true }],
+		"semi": [2, "always"],
+		"comma-dangle": [2, "always-multiline"],
+		"indent": [2, 2, { "SwitchCase": 1 }],
+		"jsx-quotes": [2, "prefer-single"],
+		"no-console": 0,
+		"no-unreachable": 2,
+		"valid-typeof": 2,
+		"quotes": [2, "single", { "allowTemplateLiterals": true }],
+		"no-var": 2,
+		"object-curly-spacing": [2, "always"],
+		"space-before-blocks": [2, "always"]
+	}
 }
