@@ -19,13 +19,13 @@ const MatchSlash = { any: '/', length: 1 };
 
 // @RGY
 const RgyDate = Rgy([
-	Start,
-	{ any: DayRange, length: 2 },
-	Slash,
-	{ any: MonthRange, length: 2 },
-	Slash,
-	{ any: Numbers, length: 4 },
-	End
+  Start,
+  { any: DayRange, length: 2 },
+  Slash,
+  { any: MonthRange, length: 2 },
+  Slash,
+  { any: Numbers, length: 4 },
+  End,
 ]);
 
 /*
@@ -46,15 +46,15 @@ const MatchPeriod = { any: '.', length: 1 };
 
 // @RGY
 const RgyIPv4 = Rgy([
-	Start,
-	MatchOctal,
-	MatchPeriod,
-	MatchOctal,
-	MatchPeriod,
-	MatchOctal,
-	MatchPeriod,
-	MatchOctal,
-	End
+  Start,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  End,
 ]);
 
 /*
@@ -102,15 +102,15 @@ RgyHexColor([Start, { any: '#', length: 1 }, { any: [Range('a', 'F'), Numbers], 
 */
 
 RgyImageSrc = Rgy([
-	Start,
-	{ any: '<', length: 1 },
-	{ any: ' ' },
-	{ any: 'src', length: 3 },
-	{ any: ' ' },
-	{ any: Quote, length: 1 },
-	{ any: URLSafeCharacter, group: true },
-	{ any: Quote, length: 1 },
-	{ any: Any },
-	{ any: ['/>', '>'] },
-	End
+  Start,
+  { any: '<', length: 1 },
+  { any: ' ' },
+  { any: 'src', length: 3 },
+  { any: ' ' },
+  { any: Quote, length: 1 },
+  { any: URLSafeCharacter, group: true },
+  { any: Quote, length: 1 },
+  { any: Any },
+  { any: ['/>', '>'] },
+  End,
 ]);

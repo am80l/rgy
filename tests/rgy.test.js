@@ -3,7 +3,7 @@ const Range = require('../src/helpers/range');
 describe('Range', () => {
   // tests base functionality of the range
   it('generates numbers all numbers between start and end', () => {
-    //expect(Range(0, 4)).toEqual([0, 1, 2, 3, 4]);
+    expect(Range(0, 4)).toEqual([0, 1, 2, 3, 4]);
     expect(Range(3, 6)).toEqual([3, 4, 5, 6]);
     expect(Range(-2, 0)).toEqual([-2, -1, 0]);
     expect(Range(1, 1)).toEqual([1]);
