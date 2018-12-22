@@ -1,3 +1,3 @@
-const rgyTest = parsedRuleSet => source => RegExp(parsedRuleSet).test(s);
+const rgyTest = parsedRuleSet => source => RegExp(parsedRuleSet).test(source);
 
 module.exports = rgyTest;
