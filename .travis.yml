@@ -8,5 +8,8 @@ notifications:
   email: false
 node_js:
   - '7'
-after_success:
-  - ./publish_master.sh
+deploy:
+  providor: script
+  script: bash publish_master.sh
+  on:
+    branch: master
