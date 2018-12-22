@@ -9,6 +9,7 @@ notifications:
 node_js:
   - '7'
   - '6'
+  - '4'
   install:
   - yarn global
   before_script:
