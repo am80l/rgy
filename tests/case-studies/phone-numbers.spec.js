@@ -17,11 +17,17 @@ const Match3Numbers = { any: Numbers, length: 3 };
 // Match: Any 4 numbers
 const Match4Numbers = { any: Numbers, length: 4 };
 
-// Match: Any valid phone nr. delimeter
-const MatchDelimeter = { any: ['-', '.'], length: 1 };
-
 // @RGY
-const RgyPhoneNr = Rgy([Start, Match3Numbers, MatchDelimeter, Match3Numbers, MatchDelimeter, Match4Numbers, End]);
+const RgyPhoneNr = Rgy([
+  Start,
+  {
+    options: [
+      [Match3Numbers, { any: '-', length: 1 }, Match3Numbers, { any: '-', length: 1 }, Match4Numbers],
+      [Match3Numbers, { any: '.', length: 1 }, Match3Numbers, { any: '.', length: 1 }, Match4Numbers],
+    ],
+  },
+  End,
+]);
 
 const valid = [
   '773-253-1978',

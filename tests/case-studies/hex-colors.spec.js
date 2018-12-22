@@ -15,7 +15,9 @@ const Range = require('../../src/helpers/range');
 const RgyHexColor = Rgy([
   Start,
   { any: '#', length: 1 },
-  { any: [Range('a', 'F'), Numbers], minimum: 3, maximum: 6 },
+  {
+    options: [{ any: [Range('a', 'F'), Numbers], length: 3 }, { any: [Range('a', 'F'), Numbers], length: 6 }],
+  },
   End,
 ]);
 
