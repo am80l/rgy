@@ -1,4 +1,6 @@
-# Rgy
+# Rgy   
+[![Build Status](https://travis-ci.com/b-upstairs/rgy.svg?branch=master)](https://travis-ci.com/b-upstairs/rgy)  
+
  :smirk: Express yourself.
  
  Rgy is a self documenting regex API.
