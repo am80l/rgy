@@ -16,15 +16,15 @@ Hopefully the regex is accompanied by a comment explaining the intent and useage
 
 Rgy (pronouned reggie) is a small api that allows you to create human readable, self documenting regular expressions. And you don't need to know any regex at all to use it.
 
-Using Rgy, you can take an expression like this:
+Using Rgy, you can take an expression from this:
 ```
 ^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}↵
 (?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$
 ```
-And make it look like this:
+To this:
 
 ```js
-const ipTest = Rgy([
+Rgy([
   Start,
   { any: Range(0, 255), minimum: 1, maximum: 3 },
   { exactly: '-', length: 1 },
@@ -33,7 +33,7 @@ const ipTest = Rgy([
   { any: Range(0, 255), minimum: 1, maximum: 3 },
   End
 ]);
-
+```
 ## :scroll: Getting Started
 
 Clone
