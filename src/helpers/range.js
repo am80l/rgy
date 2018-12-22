@@ -8,13 +8,13 @@ const Range = (first, last) => {
 			let start = LowerLetters.indexOf(first);
 			let stop = LowerLetters.indexOf(last);
 
-			return LowerLetters.slice(start, stop);
+			return LowerLetters.slice(start, stop+1);
 		} else if (first === first.toUpperCase() && last == last.toUpperCase()) {
 			// upper case set
 			let start = UpperLetters.indexOf(first);
 			let stop = UpperLetters.indexOf(last);
 
-			return UpperLetters.slice(start, stop);
+			return UpperLetters.slice(start, stop+1);
 		} else {
 			// both
 			return [
@@ -27,7 +27,7 @@ const Range = (first, last) => {
 		let numbers = [];
 
 		// build range
-		for (let i = first; i <= last; i++) numbers.push(first + i);
+		for (let i = first; i <= last; i++) numbers.push(i);
 
 		// return range
 		return numbers;

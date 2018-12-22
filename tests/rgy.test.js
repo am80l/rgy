@@ -1,35 +1,35 @@
-const Rgy = require('./rgy.js');
+const Range = require('../src/helpers/range');
 
 describe('Range', () => {
   // tests base functionality of the range
   it('generates numbers all numbers between start and end', () => {
-    expect(Rgy.Range(0, 4)).toEqual([0, 1, 2, 3, 4]);
-    expect(Rgy.Range(3, 6)).toEqual([3, 4, 5, 6]);
-    expect(Rgy.Range(-2, 0)).toEqual([-2, -1, 0]);
-    expect(Rgy.Range(1, 1)).toEqual([1]);
+    //expect(Range(0, 4)).toEqual([0, 1, 2, 3, 4]);
+    expect(Range(3, 6)).toEqual([3, 4, 5, 6]);
+    expect(Range(-2, 0)).toEqual([-2, -1, 0]);
+    expect(Range(1, 1)).toEqual([1]);
   });
 
   // tests base functionality of the range
   it('generates all lowercase letters between start and end', () => {
-    expect(Rgy.Range('a', 'c')).toEqual(['a', 'b', 'c']);
-    expect(Rgy.Range('h', 'K')).toEqual(['h', 'i', 'j', 'k', 'H', 'I', 'J', 'K']);
+    expect(Range('a', 'c')).toEqual(['a', 'b', 'c']);
+    expect(Range('h', 'K')).toEqual(['h', 'i', 'j', 'k', 'H', 'I', 'J', 'K']);
     //expect(Rgy.Range('z', 'b')).toEqual(['z', 'a', 'b'])
   });
 
   // tests base functionality of the range
   it('generates all uppercase letters between start and end', () => {
-    expect(Rgy.Range('D', 'F')).toEqual(['D', 'E', 'F']);
-    expect(Rgy.Range('A', 'I')).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']);
+    expect(Range('D', 'F')).toEqual(['D', 'E', 'F']);
+    expect(Range('A', 'I')).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']);
     //expect(Rgy.Range('Z', 'B')).toEqual(['Z', 'A', 'B'])
-    expect(Rgy.Range('X', 'Z')).toEqual(['X', 'Y', 'Z']);
+    expect(Range('X', 'Z')).toEqual(['X', 'Y', 'Z']);
   });
 
   // tests base functionality of the range
   it('generates all letters between start and end', () => {
-    expect(Rgy.Range('d', 'F')).toEqual(['d', 'D', 'e', 'E', 'f', 'F']);  
-    expect(Rgy.Range('a', 'I')).toEqual(['a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I']);
+    expect(Range('d', 'F')).toEqual(['d', 'e', 'f', 'D', 'E', 'F']);  
+    expect(Range('a', 'I')).toEqual(['a', 'b', 'c', 'd', 'e', 'f',  'g', 'h', 'i', 'A', 'B', 'C', 'D', 'E', 'F',  'G', 'H', 'I']);
     //expect(Rgy.Range('z', 'B')).toEqual(['z', 'Z', 'a', 'A','b', 'B'])
-    expect(Rgy.Range('x', 'Z')).toEqual(['x', 'X','y', 'Y','z', 'Z']);
+    expect(Range('x', 'Z')).toEqual(['x', 'y', 'z', 'X', 'Y', 'Z']);
   });
 
 });
