@@ -12,6 +12,7 @@
   "scripts": {
     "test": "jest ./tests --colors",
     "eslint": "eslint ./",
+    "eslint:fix": "eslint ./ --fix",
     "test:dev": "yarn test --verbose --watch",
     "release": "standard-version"
   },
