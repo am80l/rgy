@@ -8,4 +8,3 @@ git pull origin master
 yarn run standard-version
 git push --follow-tags origin master
 yarn publish
-    
