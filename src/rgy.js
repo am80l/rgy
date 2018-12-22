@@ -28,6 +28,8 @@ const multiJoin = any => {
     return multiJoined.join('|');
   }
 
+  console.log(any);
+
   // nothing else should be inside any
   throw Error('{ any } only accepts strings, numbers, and arrays.');
 };
@@ -67,30 +69,5 @@ const Rgy = (rules = []) => {
     debug: () => parsedRuleSet,
   };
 };
-
-const Range = require('./helpers/range');
-
-// Match: Octal
-const MatchOctal = { any: Range(0, 255), minimum: 1, maximum: 3 };
-
-// Match: Period
-const MatchPeriod = { any: '.', length: 1 };
-
-// @RGY
-const RgyIPv4 = Rgy([
-  Start,
-  MatchOctal,
-  MatchPeriod,
-  MatchOctal,
-  MatchPeriod,
-  MatchOctal,
-  MatchPeriod,
-  MatchOctal,
-  End,
-]);
-
-console.log(RgyIPv4.test('255.255.255.255'));
-console.log(RgyIPv4.test('1.12.123.255'));
-console.log(RgyIPv4.test('22.41.255'));
 
 module.exports = Rgy;
