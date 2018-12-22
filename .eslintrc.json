@@ -20,8 +20,9 @@
     "mocha": true
   },
   "rules": {
+    "no-undef": 0,
     "eol-last": ["error", "always"],
-    "no-multiple-empty-lines": { "max": 2, "maxEOF": 1 },
+    "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1 }],
     "brace-style": ["error", "stroustrup"],
     "key-spacing": [1, { "afterColon": true }],
     "semi": [2, "always"],
