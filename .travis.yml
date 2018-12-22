@@ -9,7 +9,7 @@ notifications:
 node_js:
   - '7'
 deploy:
-  providor: script
+  provider: script
   script: bash publish_master.sh
   on:
     branch: master
