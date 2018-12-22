@@ -12,9 +12,27 @@ If you're like most programmers, at some point in your career you may have come 
 
 Hopefully the regex is accompanied by a comment explaining the intent and useage of the expression, though the fact is, even the most experienced programmers can have trouble reading and maintaining a regular expression like this, which leads to wasted time trying to understand code that could be better spent on other parts of your application. 
 
-## The solution? Rgy!
+### The solution? Rgy!
 
 Rgy (pronouned reggie) is a small api that allows you to create human readable, self documenting regular expressions. And you don't need to know any regex at all to use it.
+
+Using Rgy, you can take an expression like this:
+```
+^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}↵
+(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$
+```
+And make it look like this:
+
+```js
+const ipTest = Rgy([
+  Start,
+  { any: Range(0, 255), minimum: 1, maximum: 3 },
+  { exactly: '-', length: 1 },
+  { any: Range(0, 255), minimum: 1, maximum: 3 },
+  { exactly: '-', length: 1 },
+  { any: Range(0, 255), minimum: 1, maximum: 3 },
+  End
+]);
 
 ## :scroll: Getting Started
 
