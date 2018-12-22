@@ -1,97 +1,96 @@
-const Range = (first, last) => {
-  // alphabetical range
-  if (typeof first === 'string' && typeof last === 'string') {
-    // lower case set
-    if (first === first.toLowerCase() && last == last.toLowerCase()) {
-      let start = LowerLetters.indexOf(first);
-      let stop = LowerLetters.indexOf(last);
+const { Start, End } = require('./helpers/constants');
 
-      return LowerLetters.slice(start, stop);
-    }
-    else if (first === first.toUpperCase() && last == last.toUpperCase()) {
-      // upper case set
-      let start = UpperLetters.indexOf(first);
-      let stop = UpperLetters.indexOf(last);
+const rgyMatch = parsedRuleSet => match => {};
 
-      return UpperLetters.slice(start, stop);
-    }
-    else {
-      // both
-      return [
-        ...Range(first.toLowerCase(), last.toLowerCase()),
-        ...Range(first.toUpperCase(), last.toUpperCase())
-      ];
-    }
-  }
-  else if (Number.isInteger(first) && Number.isInteger(last)) {
-    // numerical range
-    let numbers = [];
+const rgyReplace = parsedRuleSet => replace => {};
 
-    // build range
-    for (let i = first; i <= last; i++) numbers.push(first + i);
+const rgyTest = parsedRuleSet => test => RegExp(parsedRuleSet).test(test);
 
-    // return range
-    return numbers;
-  }
+const clean = str => {
+  const badCharacters = '.?:[]()!^$*+\\'
+    .split('')
+    .map(s => `\\${s}`)
+    .join('|');
+
+  return str.replace(RegExp(`(${badCharacters})`, 'g'), '\\$1');
 };
 
-const Start = Symbol('Start of Expression');
-const End = Symbol('End of Expression');
-const Numbers = '0123456789'.split('');
-const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-const UpperLetters = LowerLetters.map(l => l.toUpperCase());
-const Letters = [...LowerLetters, ...UpperLetters];
-const AlphaNumeric = [...Numbers, ...Letters];
+const multiJoin = any => {
+  // string or a number, just return it as a string
+  if (typeof any === 'string' || typeof any === 'number') return clean(any.toString());
 
-const parseRules = (exp, rule) => {
-  if (rule === Start) return (exp += '^');
-  if (rule === End) return (exp += '$');
+  // as an array
+  if (Array.isArray(any)) {
+    let multiJoined = any.reduce((joined, item) => {
+      return [...joined, multiJoin(item)];
+    }, []);
 
-  const { any, minimum, maximum, length, exactly, group } = rule;
-
-  let ruleFragment = '';
-
-  // match characters
-  if (any) {
-    ruleFragment += `[${any.join('|')}]`;
-  }
-  else if (exactly) {
-    ruleFragment += exactly;
+    return multiJoined.join('|');
   }
 
-  // match length
-  if (length) {
-    ruleFragment += `{${length}}`;
-  }
-  else if (minimum && maximum) {
-    ruleFragment += `{${minimum},${maximum}}`;
-  }
-  else if (minimum) {
-    ruleFragment += `{${minimum},}`;
-  }
-  else if (maximum) {
-    ruleFragment += `{,${maximum}}`;
-  }
-
-  // group
-  if (group) {
-    ruleFragment = `(${ruleFragment})`;
-  }
-
-  return ruleFragment;
+  // nothing else should be inside any
+  throw Error('{ any } only accepts strings, numbers, and arrays.');
 };
 
-const Rgy = rules => {
-  let exp = rules.reduce(parseRules, '');
-  // console.log(exp);
+const parseRule = (parsedRule, rule = {}) => {
+  // case: start
+  if (rule === Start) return parsedRule + '^';
+
+  // case: end
+  if (rule === End) return parsedRule + '$';
+
+  // @TODO: Sanitize string, none of the rules should have
+
+  // parse: positive matches
+  if (rule.any) parsedRule += `[${multiJoin(rule.any)}]`;
+
+  // parse: minimum, maximum
+  if (rule.minimum || rule.maximum) parsedRule += `{${rule.minimum},${rule.maximum}}`;
+
+  // parse: length
+  if (rule.length && !rule.minimum && !rule.match) parsedRule += `{${rule.length}}`;
+
+  // parse: group
+  if (rule.group) parsedRule = `(${parsedRule})`;
+
+  // done
+  return parsedRule;
+};
+
+const Rgy = (rules = []) => {
+  let parsedRuleSet = rules.reduce(parseRule, '');
 
   return {
-    match: () => {},
-    replace: () => {},
-    test: s => RegExp(exp).test(s)
+    match: rgyMatch(parsedRuleSet),
+    replace: rgyReplace(parsedRuleSet),
+    test: rgyTest(parsedRuleSet),
+    debug: () => parsedRuleSet,
   };
 };
 
-Rgy.Range = Range;
+const Range = require('./helpers/range');
+
+// Match: Octal
+const MatchOctal = { any: Range(0, 255), minimum: 1, maximum: 3 };
+
+// Match: Period
+const MatchPeriod = { any: '.', length: 1 };
+
+// @RGY
+const RgyIPv4 = Rgy([
+  Start,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  MatchPeriod,
+  MatchOctal,
+  End,
+]);
+
+console.log(RgyIPv4.test('255.255.255.255'));
+console.log(RgyIPv4.test('1.12.123.255'));
+console.log(RgyIPv4.test('22.41.255'));
 
 module.exports = Rgy;
