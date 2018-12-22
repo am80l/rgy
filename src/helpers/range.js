@@ -8,12 +8,7 @@ const Range = (first, last) => {
             let start = LowerLetters.indexOf(first);
             let stop = LowerLetters.indexOf(last);
             if (stop < start) {
-                //we need all letters between last and (z|Z)  && all letters between (a|A) and start
-                return [
-                    // Main Call is Range('x', 'c')
-                    ...Range(first, "z"), // BEFORE Range(20, 'z') ... NOW Range('x', 'z')
-                    ...Range("a", last) // BEFORE Range("a", 4) ... NOW Range('a', '2')
-                ];
+                return [...Range(first, "z"), ...Range("a", last)];
             }
 
             return LowerLetters.slice(start, stop + 1);
@@ -26,7 +21,6 @@ const Range = (first, last) => {
             let start = UpperLetters.indexOf(first);
             let stop = UpperLetters.indexOf(last);
             if (stop < start) {
-                //we need all letters between last and (z|Z)  && all letters between (a|A) and start
                 return [...Range(first, "Z"), ...Range("A", last)];
             }
 
