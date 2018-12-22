@@ -1,6 +1,6 @@
 {
   "name": "reggie",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
@@ -11,6 +11,6 @@
     "test": "echo \"Nothing to see here for now\" && exit 0",
     "release": "standard-version"
   },
-  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
+  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>, Austin La",
   "license": "MIT"
 }
