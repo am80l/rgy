@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "standard-version": "^4.4.0"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Nothing to see here for now\" && exit 0"
+    "test": "echo \"Nothing to see here for now\" && exit 0",
+    "release": "standard-version"
   },
   "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
   "license": "MIT"
