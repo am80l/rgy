@@ -1,6 +1,6 @@
-const Rgy = require('../../src/rgy');
-const { Start, End, Numbers } = require('../../src/helpers/constants.js');
-const Range = require('../../src/helpers/range');
+import Rgy from '../../src/rgy';
+import { Start, End, Numbers } from '../../src/helpers/constants.js';
+import Range from '../../src/helpers/range';
 
 /*
   Subject: Source of an Image Tag

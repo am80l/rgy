@@ -3,9 +3,13 @@ const multiJoin = require('./helpers/multiJoin');
 const { Start, End } = require('./helpers/constants');
 
 // test strategies
-const rgyTest = require('./strategies/rgyTest');
-const rgyReplace = require('./strategies/rgyReplace');
-const rgyMatch = require('./strategies/rgyMatch');
+// const rgyTest = require('./strategies/rgyTest');
+// const rgyReplace = require('./strategies/rgyReplace');
+// const rgyMatch = require('./strategies/rgyMatch');
+
+import rgyTest from './strategies/rgyTest';
+import rgyReplace from './strategies/rgyReplace';
+import rgyMatch from './strategies/rgyMatch';
 
 /**
  * Parses Rgy rules into partial regular expressions.
@@ -23,7 +27,7 @@ const parseRule = (parsedRule, rule) => {
 
   // any
   if (rule.any) {
-    parsedRule += `(${multiJoin(rule.any)})`;
+    parsedRule += `(?:${multiJoin(rule.any)})`;
   }
 
   // minimum, maximum
@@ -57,20 +61,20 @@ const parseRule = (parsedRule, rule) => {
     const joinedOptions = parsedOptions.join('|');
 
     // add parsed rule
-    parsedRule += '(' + joinedOptions + ')';
+    parsedRule += '(?:' + joinedOptions + ')';
   }
 
   // grouping
-  // if (options.group) {
-  //   parsedRule = '(' + parsedRule + ')';
-  // }
+  if (rule.group) {
+    parsedRule = '(' + parsedRule + ')';
+  }
 
   // done
   return parsedRule;
 };
 
 const Rgy = (rules = []) => {
-  let parsedRuleSet = rules.reduce(parseRule, '');
+  let parsedRuleSet = '(' + rules.reduce(parseRule, '') + ')';
 
   return {
     match: rgyMatch(parsedRuleSet),
@@ -80,4 +84,4 @@ const Rgy = (rules = []) => {
   };
 };
 
-module.exports = Rgy;
+export default Rgy;

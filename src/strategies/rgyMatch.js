@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
+const rgyMatch = parsedRuleSet => source => {
+  return source.match(RegExp(parsedRuleSet, 'gm'));
+};
 
-const rgyMatch = parsedRuleSet => match => source =>
-  source.match(RegExp(parsedRuleSet));
-
-module.exports = rgyMatch;
+export default rgyMatch;
