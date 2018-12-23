@@ -31,13 +31,11 @@ To this:
 
 ```js
 Rgy([
-  Start,
-  { any: Range(0, 255), minimum: 1, maximum: 3 },
-  { exactly: "-", length: 1 },
-  { any: Range(0, 255), minimum: 1, maximum: 3 },
-  { exactly: "-", length: 1 },
-  { any: Range(0, 255), minimum: 1, maximum: 3 },
-  End
+  { any: Range(0, 255) },
+  { any: "-", length: 1 },
+  { any: Range(0, 255) },
+  { any: "-", length: 1 },
+  { any: Range(0, 255) },
 ]);
 ```
 
