@@ -25,20 +25,20 @@ const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 /**
  * @constant {String[]} LowerLetters Alphabet, uppercase
  */
-const UpperLetters = LowerLetters.map(s => s.toUpperCase());
+const UpperLetters = UpperLetters.map(s => s.toUpperCase());
 
 /**
- * @constant {String[]} LowerLetters Alphabet, lowercase and uppcase combined
+ * @constant {String[]} Letters Alphabet, lowercase and uppcase combined
  */
 const Letters = [...LowerLetters, ...UpperLetters];
 
 /**
- * @constant {Array} LowerLetters Alphabet, lowercase, uppercase, and numbers combined
+ * @constant {Array} AlphaNumeric Alphabet, lowercase, uppercase, and numbers combined
  */
 const AlphaNumeric = [...Letters, ...Numbers];
 
 /**
- * @constant {String[]} LowerLetters Single and double quote
+ * @constant {String[]} Quote Single and double quote
  */
 const Quote = ['"', '\''];
 
