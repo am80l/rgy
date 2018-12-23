@@ -1,20 +1,15 @@
 import { LowerLetters, UpperLetters } from './constants';
 
 /**
- * Range
- * 
  * Will generate a range of numbers or letters as a string.
  * 
  * @example
  * Range('a', 'd'); // returns ['a', 'b', 'c', 'd']
  * 
- * @example
  * Range('X', 'Z'); // returns ['X', 'Y', 'Z']
  * 
- * @example
  * Range('q', 'T'); // returns ['q', 'r', 's', 't', 'Q', 'R', 'S', 'T']
  * 
- * @example
  * Range(33, 36); // returns ['33', '34', '35', '36']
  * 
  * @param {Number | String} first The beginning of the range

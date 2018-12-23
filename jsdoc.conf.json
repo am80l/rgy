@@ -1,0 +1,9 @@
+{
+	"plugins": ["plugins/markdown", "plugins/summarize"],
+	"opts": {
+		"template": "node_modules/tui-jsdoc-template",
+		"recursive": true,
+		"destination": "./docs",
+		"encoding": "utf8"
+	}
+}

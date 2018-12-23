@@ -22,7 +22,7 @@
 	},
 	"browserslist": "> 0.25%, not dead",
 	"scripts": {
-		"document": "npx rimraf ./docs/ && yarn jsdoc -r -d ./docs/ ./src/",
+		"document": "npx rimraf ./docs/ && yarn jsdoc -r -c ./jsdoc.conf.json ./src/",
 		"test": "jest ./tests --colors",
 		"eslint": "eslint ./src",
 		"eslint:fix": "yarn eslint --fix",
@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"jsdoc": "^3.5.5",
-		"nodemon": "^1.18.9"
+		"nodemon": "^1.18.9",
+		"tui-jsdoc-template": "^1.2.2"
 	}
 }

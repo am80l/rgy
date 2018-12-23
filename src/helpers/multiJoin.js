@@ -1,11 +1,6 @@
-/**
- * @module Helpers
- */
 import clean from './clean';
 
 /**
- * Multi-Join
- *
  * Flattens all arrays into one. Converts every item in the array to a string.
  * Cleans each item in the array. Joins each item in the array with a '|'.
  *
