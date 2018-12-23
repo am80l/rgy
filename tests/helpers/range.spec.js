@@ -17,7 +17,6 @@ describe('Range', () => {
   });
 
   // tests base functionality of the range
-<<<<<<< HEAD
   it('generates all uppercase letters between start and end', () => {
     expect(Range('D', 'F')).toEqual(['D', 'E', 'F']);
     expect(Range('A', 'I')).toEqual([
@@ -60,50 +59,6 @@ describe('Range', () => {
     ]);
     expect(Range('z', 'B')).toEqual(['z', 'a', 'b', 'Z', 'A', 'B']);
     expect(Range('x', 'Z')).toEqual(['x', 'y', 'z', 'X', 'Y', 'Z']);
-=======
-  it("generates all uppercase letters between start and end", () => {
-    expect(Range("D", "F")).toEqual(["D", "E", "F"]);
-    expect(Range("A", "I")).toEqual([
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I"
-    ]);
-    expect(Range("Z", "B")).toEqual(["Z", "A", "B"]);
-    expect(Range("X", "Z")).toEqual(["X", "Y", "Z"]);
-  });
-
-  // tests base functionality of the range
-  it("generates all letters between start and end", () => {
-    expect(Range("d", "F")).toEqual(["d", "e", "f", "D", "E", "F"]);
-    expect(Range("a", "I")).toEqual([
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I"
-    ]);
-    expect(Range("z", "B")).toEqual(["z", "a", "b", "Z", "A", "B"]);
-    expect(Range("x", "Z")).toEqual(["x", "y", "z", "X", "Y", "Z"]);
->>>>>>> 8ac670b69e86411db32f6f6aa4976519a45889fe
   });
 });
 
