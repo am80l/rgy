@@ -1,4 +1,5 @@
 import clean from './clean';
+
 /**
  * Multi-Join
  *
@@ -10,8 +11,7 @@ import clean from './clean';
  */
 const multiJoin = joinable => {
   // string or a number, just return it as a string
-  if (typeof joinable === 'string' || typeof joinable === 'number')
-    return clean(joinable.toString());
+  if (typeof joinable === 'string' || typeof joinable === 'number') return clean(joinable.toString());
 
   // as an array
   if (Array.isArray(joinable)) {
