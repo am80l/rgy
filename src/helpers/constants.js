@@ -23,9 +23,9 @@ const Numbers = '0123456789'.split('');
 const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 /**
- * @constant {String[]} LowerLetters Alphabet, uppercase
+ * @constant {String[]} UpperLetters Alphabet, uppercase
  */
-const UpperLetters = UpperLetters.map(s => s.toUpperCase());
+const UpperLetters = LowerLetters.map(s => s.toUpperCase());
 
 /**
  * @constant {String[]} Letters Alphabet, lowercase and uppcase combined
