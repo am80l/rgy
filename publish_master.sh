@@ -6,5 +6,5 @@ echo "BRANCH :: $TRAVIS_BRANCH"
 git checkout master
 git pull origin master
 yarn run standard-version
-git push --follow-tags origin master
+git push origin master
 yarn publish
