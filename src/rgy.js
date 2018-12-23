@@ -3,10 +3,6 @@ const multiJoin = require('./helpers/multiJoin');
 const { Start, End } = require('./helpers/constants');
 
 // test strategies
-// const rgyTest = require('./strategies/rgyTest');
-// const rgyReplace = require('./strategies/rgyReplace');
-// const rgyMatch = require('./strategies/rgyMatch');
-
 import rgyTest from './strategies/rgyTest';
 import rgyReplace from './strategies/rgyReplace';
 import rgyMatch from './strategies/rgyMatch';
