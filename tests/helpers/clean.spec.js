@@ -1,3 +1,4 @@
+/* global describe, it */
 import clean from '../../src/helpers/clean';
 const badCharacters = '.?:[]()!^$*+\\';
 

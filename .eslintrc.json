@@ -12,7 +12,7 @@
     },
     "ecmaVersion": 6
   },
-  "extends": "eslint:recommended",
+  "extends": "jest/recommended",
   "env": {
     "browser": true,
     "node": true,
@@ -20,7 +20,6 @@
     "mocha": true
   },
   "rules": {
-    "no-undef": 0,
     "eol-last": ["error", "always"],
     "no-multiple-empty-lines": [2, { "max": 2, "maxEOF": 1 }],
     "brace-style": ["error", "stroustrup"],
