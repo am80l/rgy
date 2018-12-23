@@ -1,4 +1,4 @@
-const multiJoin = require('../../src/helpers/multiJoin');
+import multiJoin from '../../src/helpers/multiJoin';
 
 describe('multiJoin', () => {
   it(`Handles strings`, () => {

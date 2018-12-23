@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /*
   Subject: Date
 
@@ -20,7 +22,7 @@ const MatchSlash = { any: '/', length: 1 };
 // @RGY
 const RgyDate = Rgy([
   Start,
-  { any: DayRange, length: 2 },
+  { any: 'DayRange', length: 2 },
   Slash,
   { any: MonthRange, length: 2 },
   Slash,
@@ -77,7 +79,14 @@ const Match4Numbers = { any: Number, length: 4 };
 const MatchDelimeter = { any: ['-', '.'], length: 1 };
 
 // @RGY
-const RgyPhoneNr = Rgy([Start, Match3Numbers, MatchDelimeter, Match3Numbers, MatchDelimeter, Match4Numbers]);
+const RgyPhoneNr = Rgy([
+  Start,
+  Match3Numbers,
+  MatchDelimeter,
+  Match3Numbers,
+  MatchDelimeter,
+  Match4Numbers,
+]);
 
 /*
   Subject: Hex Color
@@ -89,7 +98,12 @@ const RgyPhoneNr = Rgy([Start, Match3Numbers, MatchDelimeter, Match3Numbers, Mat
   #FFF or #00AACC
 */
 
-RgyHexColor([Start, { any: '#', length: 1 }, { any: [Range('a', 'F'), Numbers], minimum: 3, maximum: 6 }, End]);
+RgyHexColor([
+  Start,
+  { any: '#', length: 1 },
+  { any: [Range('a', 'F'), Numbers], minimum: 3, maximum: 6 },
+  End,
+]);
 
 /*
   Subject: Source of an Image Tag
