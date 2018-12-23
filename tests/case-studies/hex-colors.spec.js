@@ -16,10 +16,7 @@ const RgyHexColor = Rgy([
   Start,
   { any: '#', length: 1 },
   {
-    options: [
-      { any: [Range('a', 'F'), Numbers], length: 3 },
-      { any: [Range('a', 'F'), Numbers], length: 6 },
-    ],
+    options: [{ any: [Range('a', 'F'), Numbers], length: 3 }, { any: [Range('a', 'F'), Numbers], length: 6 }],
   },
   End,
 ]);
@@ -77,18 +74,7 @@ const valid = [
   '#66F',
 ];
 
-const invalid = [
-  '966',
-  '99FF-9',
-  '#80B30 ',
-  '#809900 ',
-  ' #E6B3B3',
-  '6680B3',
-  '#6Z991A',
-  '#FG9',
-  '#C1',
-  '#FF1A6',
-];
+const invalid = ['966', '99FF-9', '#80B30 ', '#809900 ', ' #E6B3B3', '6680B3', '#6Z991A', '#FG9', '#C1', '#FF1A6'];
 
 describe('Case Study: HexColors', () => {
   describe('Valid Colors', () => {

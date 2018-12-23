@@ -13,10 +13,11 @@ import Range from '../../src/helpers/range';
 */
 
 // Match: Octal
-const MatchOctal = { any: Range(0, 255), minimum: 1, maximum: 3 };
+// const MatchOctal = { any: Range(0, 255), minimum: 1, maximum: 3 };
+const MatchOctal = { any: Range(0, 255) };
 
 // Match: Period
-const MatchPeriod = { any: '.', length: 1 };
+const MatchPeriod = { any: '.' };
 
 // @RGY
 const RgyIPv4 = Rgy([

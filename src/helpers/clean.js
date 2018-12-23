@@ -1,5 +1,5 @@
 module.exports = str => {
-  const badCharacters = '.?:[]()!^$*+\\'
+  const badCharacters = '.?:[]()!^$*+\\/'
     .split('')
     .map(s => `\\${s}`)
     .join('|');

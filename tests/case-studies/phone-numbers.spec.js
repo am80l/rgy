@@ -22,20 +22,8 @@ const RgyPhoneNr = Rgy([
   Start,
   {
     options: [
-      [
-        Match3Numbers,
-        { any: '-', length: 1 },
-        Match3Numbers,
-        { any: '-', length: 1 },
-        Match4Numbers,
-      ],
-      [
-        Match3Numbers,
-        { any: '.', length: 1 },
-        Match3Numbers,
-        { any: '.', length: 1 },
-        Match4Numbers,
-      ],
+      [Match3Numbers, { any: '-' }, Match3Numbers, { any: '-' }, Match4Numbers],
+      [Match3Numbers, { any: '.' }, Match3Numbers, { any: '.' }, Match4Numbers],
     ],
   },
   End,

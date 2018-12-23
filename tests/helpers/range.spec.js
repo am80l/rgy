@@ -19,17 +19,7 @@ describe('Range', () => {
   // tests base functionality of the range
   it('generates all uppercase letters between start and end', () => {
     expect(Range('D', 'F')).toEqual(['D', 'E', 'F']);
-    expect(Range('A', 'I')).toEqual([
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-    ]);
+    expect(Range('A', 'I')).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']);
     expect(Range('Z', 'B')).toEqual(['Z', 'A', 'B']);
     expect(Range('X', 'Z')).toEqual(['X', 'Y', 'Z']);
   });
