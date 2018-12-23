@@ -1,4 +1,4 @@
-const Range = require('../src/helpers/range');
+import require from '../src/helpers/range';
 
 describe('Range', () => {
   // tests base functionality of the range
@@ -19,19 +19,47 @@ describe('Range', () => {
   // tests base functionality of the range
   it('generates all uppercase letters between start and end', () => {
     expect(Range('D', 'F')).toEqual(['D', 'E', 'F']);
-    expect(Range('A', 'I')).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']);
+    expect(Range('A', 'I')).toEqual([
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+    ]);
     //expect(Rgy.Range('Z', 'B')).toEqual(['Z', 'A', 'B'])
     expect(Range('X', 'Z')).toEqual(['X', 'Y', 'Z']);
   });
 
   // tests base functionality of the range
   it('generates all letters between start and end', () => {
-    expect(Range('d', 'F')).toEqual(['d', 'e', 'f', 'D', 'E', 'F']);  
-    expect(Range('a', 'I')).toEqual(['a', 'b', 'c', 'd', 'e', 'f',  'g', 'h', 'i', 'A', 'B', 'C', 'D', 'E', 'F',  'G', 'H', 'I']);
+    expect(Range('d', 'F')).toEqual(['d', 'e', 'f', 'D', 'E', 'F']);
+    expect(Range('a', 'I')).toEqual([
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+    ]);
     //expect(Rgy.Range('z', 'B')).toEqual(['z', 'Z', 'a', 'A','b', 'B'])
     expect(Range('x', 'Z')).toEqual(['x', 'y', 'z', 'X', 'Y', 'Z']);
   });
-
 });
 
 // describe('Rgy', () => {});

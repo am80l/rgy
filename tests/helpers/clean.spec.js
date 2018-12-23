@@ -1,4 +1,5 @@
 import clean from '../../src/helpers/clean';
+
 const badCharacters = '.?:[]()!^$*+\\';
 
 describe('clean', () => {

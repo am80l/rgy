@@ -1,5 +1,5 @@
-const Rgy = require('../../src/rgy');
-const { Start, End, Numbers } = require('../../src/helpers/constants.js');
+import Rgy from '../../src/rgy';
+import { Start, End, Numbers } from '../../src/helpers/constants.js';
 
 /*
   Subject: Phone Number
@@ -22,8 +22,20 @@ const RgyPhoneNr = Rgy([
   Start,
   {
     options: [
-      [Match3Numbers, { any: '-', length: 1 }, Match3Numbers, { any: '-', length: 1 }, Match4Numbers],
-      [Match3Numbers, { any: '.', length: 1 }, Match3Numbers, { any: '.', length: 1 }, Match4Numbers],
+      [
+        Match3Numbers,
+        { any: '-', length: 1 },
+        Match3Numbers,
+        { any: '-', length: 1 },
+        Match4Numbers,
+      ],
+      [
+        Match3Numbers,
+        { any: '.', length: 1 },
+        Match3Numbers,
+        { any: '.', length: 1 },
+        Match4Numbers,
+      ],
     ],
   },
   End,

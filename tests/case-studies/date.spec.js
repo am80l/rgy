@@ -1,6 +1,6 @@
-const Rgy = require('../../src/rgy');
-const { Start, End, Numbers } = require('../../src/helpers/constants.js');
-const Range = require('../../src/helpers/range');
+import Rgy from '../../src/rgy';
+import { Start, End, Numbers } from '../../src/helpers/constants.js';
+import Range from '../../src/helpers/range';
 
 /*
   Subject: Date
@@ -34,7 +34,13 @@ const RgyDate = Rgy([
 
 const valid = ['01/12/1943', '12/10/2020', '05/01/2011'];
 
-const invalid = ['1/21/1943', '13/21/2012', '10/10/201', '01/04.1002', '10/34/2010'];
+const invalid = [
+  '1/21/1943',
+  '13/21/2012',
+  '10/10/201',
+  '01/04.1002',
+  '10/34/2010',
+];
 
 describe('Case Study: Date', () => {
   describe('Valid Dates', () => {

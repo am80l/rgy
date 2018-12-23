@@ -1,6 +1,6 @@
-const Rgy = require('../../src/rgy');
-const { Start, End, Numbers } = require('../../src/helpers/constants.js');
-const Range = require('../../src/helpers/range');
+import Rgy from '../../src/rgy';
+import { Start, End, Numbers } from '../../src/helpers/constants.js';
+import Range from '../../src/helpers/range';
 
 /*
   Subject: Hex Color
@@ -16,7 +16,10 @@ const RgyHexColor = Rgy([
   Start,
   { any: '#', length: 1 },
   {
-    options: [{ any: [Range('a', 'F'), Numbers], length: 3 }, { any: [Range('a', 'F'), Numbers], length: 6 }],
+    options: [
+      { any: [Range('a', 'F'), Numbers], length: 3 },
+      { any: [Range('a', 'F'), Numbers], length: 6 },
+    ],
   },
   End,
 ]);
@@ -74,7 +77,18 @@ const valid = [
   '#66F',
 ];
 
-const invalid = ['966', '99FF-9', '#80B30 ', '#809900 ', ' #E6B3B3', '6680B3', '#6Z991A', '#FG9', '#C1', '#FF1A6'];
+const invalid = [
+  '966',
+  '99FF-9',
+  '#80B30 ',
+  '#809900 ',
+  ' #E6B3B3',
+  '6680B3',
+  '#6Z991A',
+  '#FG9',
+  '#C1',
+  '#FF1A6',
+];
 
 describe('Case Study: HexColors', () => {
   describe('Valid Colors', () => {
