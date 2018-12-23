@@ -14,36 +14,56 @@ const rgyMatch = require('./strategies/rgyMatch');
  * @param {Object | Symbol} rule The rule to enforce.
  * @returns {String} A string that represents a partial regular expression.
  */
-const parseRule = (parsedRule, rule = {}) => {
-  // case: array of sub-rules
-
-  // case: start
+const parseRule = (parsedRule, rule) => {
+  // start
   if (rule === Start) return parsedRule + '^';
 
-  // case: end
+  // end
   if (rule === End) return parsedRule + '$';
 
-  // parse: options
-  if (rule.options) {
-    parsedRule += `(${rule.options
-      .map(option => {
-        if (Array.isArray(option)) return option.reduce(parseRule, '');
-        return parseRule('', option);
-      })
-      .join('|')})`;
+  // any
+  if (rule.any) {
+    parsedRule += `(${multiJoin(rule.any)})`;
   }
 
-  // parse: positive matches
-  if (rule.any) parsedRule += `[${multiJoin(rule.any)}]`;
+  // minimum, maximum
+  if (!rule.length && (rule.minimum || rule.maximum)) {
+    parsedRule += `{${rule.minimum},${rule.maximum}}`;
+  }
 
-  // parse: minimum, maximum
-  if (rule.minimum || rule.maximum) parsedRule += `{${rule.minimum},${rule.maximum}}`;
+  // length
+  if (rule.length) {
+    parsedRule += `{${rule.length}}`;
+  }
 
-  // parse: length
-  if (rule.length && !rule.minimum && !rule.match) parsedRule += `{${rule.length}}`;
+  // options
+  if (rule.options) {
+    // options
+    const options = rule.options;
 
-  // parse: group
-  if (rule.group) parsedRule = `(${parsedRule})`;
+    // parsed options
+    const parsedOptions = options.map(option => {
+      // if option is an array, reduce it
+      if (Array.isArray(option)) {
+        return option.reduce(parseRule, '');
+      }
+      else {
+        // if the option is a single rule, parse it
+        return parseRule('', option);
+      }
+    });
+
+    // join the options together with OR
+    const joinedOptions = parsedOptions.join('|');
+
+    // add parsed rule
+    parsedRule += '(' + joinedOptions + ')';
+  }
+
+  // grouping
+  // if (options.group) {
+  //   parsedRule = '(' + parsedRule + ')';
+  // }
 
   // done
   return parsedRule;
