@@ -1,4 +1,4 @@
-const clean = require('../../src/helpers/clean');
+import clean from '../../src/helpers/clean';
 const badCharacters = '.?:[]()!^$*+\\';
 
 describe('clean', () => {
