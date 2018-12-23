@@ -22,6 +22,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "scripts": {
+    "document": "npx rimraf ./docs/ && yarn jsdoc -d ./docs/ ./src/",
     "test": "jest ./tests --colors",
     "eslint": "eslint ./",
     "eslint:fix": "eslint ./ --fix",
