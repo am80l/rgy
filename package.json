@@ -27,7 +27,8 @@
 		"eslint": "eslint ./src",
 		"eslint:fix": "yarn eslint --fix",
 		"test:dev": "nodemon -w ./src/ -w ./tests/ --exec yarn test",
-		"release": "standard-version"
+		"release": "standard-version",
+		"build": "yarn test --coverage && yarn document"
 	},
 	"author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
 	"license": "MIT",
