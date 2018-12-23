@@ -8,4 +8,4 @@ git checkout master
 git pull origin master
 yarn run release --silent
 git push
-yarn publish
+yarn publish --non-interactive
