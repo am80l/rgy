@@ -34,7 +34,7 @@
         <ul></ul>
     </div>
     
-    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Constants.html">Constants</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Constants_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-Constants.html#~AlphaNumeric">AlphaNumeric</a></li><li><a href="module-Constants.html#~End">End</a></li><li><a href="module-Constants.html#~Letters">Letters</a></li><li><a href="module-Constants.html#~LowerLetters">LowerLetters</a></li><li><a href="module-Constants.html#~LowerLetters">LowerLetters</a></li><li><a href="module-Constants.html#~Numbers">Numbers</a></li><li><a href="module-Constants.html#~Quote">Quote</a></li><li><a href="module-Constants.html#~Start">Start</a></li></ul></div></li><li><a href="module-Helpers.html">Helpers</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Helpers_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="module-Helpers.html#~clean">clean</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#multiJoin">multiJoin</a></li><li><a href="global.html#parseRule">parseRule</a></li><li><a href="global.html#Range">Range</a></li></ul></div>
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-Constants.html">Constants</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Constants_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-Constants.html#~AlphaNumeric">AlphaNumeric</a></li><li><a href="module-Constants.html#~End">End</a></li><li><a href="module-Constants.html#~Letters">Letters</a></li><li><a href="module-Constants.html#~LowerLetters">LowerLetters</a></li><li><a href="module-Constants.html#~Numbers">Numbers</a></li><li><a href="module-Constants.html#~Quote">Quote</a></li><li><a href="module-Constants.html#~Start">Start</a></li><li><a href="module-Constants.html#~UpperLetters">UpperLetters</a></li></ul></div></li><li><a href="module-Helpers.html">Helpers</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:Helpers_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="module-Helpers.html#~clean">clean</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Global</h3><ul><li><a href="global.html#multiJoin">multiJoin</a></li><li><a href="global.html#parseRule">parseRule</a></li><li><a href="global.html#Range">Range</a></li></ul></div>
 </nav>
 <div id="resizer"></div>
 
@@ -51,9 +51,13 @@ const multiJoin = require('./helpers/multiJoin');
 const { Start, End } = require('./helpers/constants');
 
 // test strategies
-const rgyTest = require('./strategies/rgyTest');
-const rgyReplace = require('./strategies/rgyReplace');
-const rgyMatch = require('./strategies/rgyMatch');
+// const rgyTest = require('./strategies/rgyTest');
+// const rgyReplace = require('./strategies/rgyReplace');
+// const rgyMatch = require('./strategies/rgyMatch');
+
+import rgyTest from './strategies/rgyTest';
+import rgyReplace from './strategies/rgyReplace';
+import rgyMatch from './strategies/rgyMatch';
 
 /**
  * Parses Rgy rules into partial regular expressions.
@@ -71,7 +75,7 @@ const parseRule = (parsedRule, rule) => {
 
   // any
   if (rule.any) {
-    parsedRule += `(${multiJoin(rule.any)})`;
+    parsedRule += `(?:${multiJoin(rule.any)})`;
   }
 
   // minimum, maximum
@@ -105,20 +109,20 @@ const parseRule = (parsedRule, rule) => {
     const joinedOptions = parsedOptions.join('|');
 
     // add parsed rule
-    parsedRule += '(' + joinedOptions + ')';
+    parsedRule += '(?:' + joinedOptions + ')';
   }
 
   // grouping
-  // if (options.group) {
-  //   parsedRule = '(' + parsedRule + ')';
-  // }
+  if (rule.group) {
+    parsedRule = '(' + parsedRule + ')';
+  }
 
   // done
   return parsedRule;
 };
 
 const Rgy = (rules = []) => {
-  let parsedRuleSet = rules.reduce(parseRule, '');
+  let parsedRuleSet = '(' + rules.reduce(parseRule, '') + ')';
 
   return {
     match: rgyMatch(parsedRuleSet),
@@ -128,7 +132,7 @@ const Rgy = (rules = []) => {
   };
 };
 
-module.exports = Rgy;
+export default Rgy;
 </code></pre>
         </article>
     </section>

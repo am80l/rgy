@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.33% </span>
+        <span class="strong">89.29% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>28/30</span>
+        <span class='fraction'>25/28</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88.89% </span>
+        <span class="strong">85% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>16/18</span>
+        <span class='fraction'>17/20</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.86% </span>
+        <span class="strong">88.46% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>26/28</span>
+        <span class='fraction'>23/26</span>
       </div>
     </div>
   </div>
@@ -126,14 +126,22 @@
 81
 82
 83
-84</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+84
+85
+86
+87
+88</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,8 +197,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -208,15 +216,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// helpers
 const multiJoin = require('./helpers/multiJoin');
 const { Start, End } = require('./helpers/constants');
 &nbsp;
 // test strategies
-const rgyTest = require('./strategies/rgyTest');
-const rgyReplace = require('./strategies/rgyReplace');
-const rgyMatch = require('./strategies/rgyMatch');
+// const rgyTest = require('./strategies/rgyTest');
+// const rgyReplace = require('./strategies/rgyReplace');
+// const rgyMatch = require('./strategies/rgyMatch');
+&nbsp;
+import rgyTest from './strategies/rgyTest';
+import rgyReplace from './strategies/rgyReplace';
+import rgyMatch from './strategies/rgyMatch';
 &nbsp;
 /**
  * Parses Rgy rules into partial regular expressions.
@@ -234,7 +246,7 @@ const parseRule = (parsedRule, rule) =&gt; {
 &nbsp;
   // any
   if (rule.any) {
-    parsedRule += `(${multiJoin(rule.any)})`;
+    parsedRule += `(?:${multiJoin(rule.any)})`;
   }
 &nbsp;
   // minimum, maximum
@@ -268,20 +280,20 @@ const parseRule = (parsedRule, rule) =&gt; {
     const joinedOptions = parsedOptions.join('|');
 &nbsp;
     // add parsed rule
-    parsedRule += '(' + joinedOptions + ')';
+    parsedRule += '(?:' + joinedOptions + ')';
   }
 &nbsp;
   // grouping
-  // if (options.group) {
-  //   parsedRule = '(' + parsedRule + ')';
-  // }
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (rule.group) {
+<span class="cstat-no" title="statement not covered" >    parsedRule = '(' + parsedRule + ')';</span>
+  }
 &nbsp;
   // done
   return parsedRule;
 };
 &nbsp;
 const Rgy = (rules = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> =&gt; {
-  let parsedRuleSet = rules.reduce(parseRule, '');
+  let parsedRuleSet = '(' + rules.reduce(parseRule, '') + ')';
 &nbsp;
   return {
     match: rgyMatch(parsedRuleSet),
@@ -291,14 +303,14 @@ const Rgy = (rules = <span class="branch-0 cbranch-no" title="branch not covered
   };
 };
 &nbsp;
-module.exports = Rgy;
+export default Rgy;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 22 2018 23:37:09 GMT-0800 (GMT-08:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 23 2018 01:35:27 GMT-0800 (GMT-08:00)
 </div>
 </div>
 <script src="..\prettify.js"></script>
