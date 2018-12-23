@@ -1,46 +1,46 @@
 {
-	"name": "reggie",
-	"version": "0.0.0",
-	"description": "",
-	"main": "src/rgy.js",
-	"devDependencies": {
-		"@babel/cli": "^7.2.3",
-		"@babel/core": "^7.2.2",
-		"@babel/preset-env": "^7.0.0",
-		"babel-core": "^7.0.0-bridge.0",
-		"babel-jest": "^23.6.0",
-		"eslint": "^5.10.0",
-		"eslint-plugin-jest": "^22.1.2",
-		"husky": "^1.2.1",
-		"jest": "^23.6.0",
-		"standard-version": "^4.4.0"
-	},
-	"jest": {
-		"transform": {
-			"^.+\\.jsx?$": "babel-jest"
-		}
-	},
-	"browserslist": "> 0.25%, not dead",
-	"scripts": {
-		"document": "npx rimraf ./docs/ && yarn jsdoc -r -c ./jsdoc.conf.json ./src/",
-		"test": "jest ./tests --colors",
-		"eslint": "eslint ./src",
-		"eslint:fix": "yarn eslint --fix",
-		"test:dev": "nodemon -w ./src/ -w ./tests/ --exec \"yarn test\"",
-		"test:coverage": "yarn test --coverage",
-		"release": "standard-version",
-		"build": "yarn test:coverage && yarn document"
-	},
-	"author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
-	"license": "MIT",
-	"husky": {
-		"hooks": {
-			"pre-push": "yarn run eslint && yarn test"
-		}
-	},
-	"dependencies": {
-		"jsdoc": "^3.5.5",
-		"nodemon": "^1.18.9",
-		"tui-jsdoc-template": "^1.2.2"
-	}
+  "name": "reggie",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/rgy.js",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "husky": "^1.2.1",
+    "jest": "^23.6.0",
+    "standard-version": "^4.4.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "browserslist": "> 0.25%, not dead",
+  "scripts": {
+    "document": "npx rimraf ./docs/ && yarn jsdoc -r -c ./jsdoc.conf.json ./src/",
+    "test": "jest ./tests --colors",
+    "eslint": "eslint src tests",
+    "eslint:fix": "yarn eslint --fix",
+    "test:dev": "nodemon -w ./src/ -w ./tests/ --exec \"yarn test\"",
+    "test:coverage": "yarn test --coverage",
+    "release": "standard-version",
+    "build": "yarn test:coverage && yarn document"
+  },
+  "author": "Michael Hartmayer <michaelhartmayer@gmail.com>",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn run eslint && yarn test"
+    }
+  },
+  "dependencies": {
+    "jsdoc": "^3.5.5",
+    "nodemon": "^1.18.9",
+    "tui-jsdoc-template": "^1.2.2"
+  }
 }
