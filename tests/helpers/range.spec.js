@@ -1,4 +1,4 @@
-const Range = require('../src/helpers/range');
+import Range from '../../src/helpers/range';
 
 describe('Range', () => {
   // tests base functionality of the range
