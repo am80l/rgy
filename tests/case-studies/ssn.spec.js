@@ -57,8 +57,7 @@ const invalid = [
   '435-004690',
   '471!04-0000',
   '698-0795286',
-  '69820795286'
-]
+  '69820795286'];
 
 // Match: Any 1 numbers
 const Match1Numbers = { any: Range(0, 8), length: 1 };
