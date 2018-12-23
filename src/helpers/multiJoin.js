@@ -1,3 +1,6 @@
+/**
+ * @module Helpers
+ */
 import clean from './clean';
 
 /**

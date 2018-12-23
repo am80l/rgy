@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: helpers/clean.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,41 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: helpers/clean.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Helpers
+ */
 
+/**
+ * Clean
+ * 
+ * Cleans a string by escaping characters that regex may interpret as rules.
+ * 
+ * @param {string} str string to clean.
+ * @returns {string} returns a clean string.
+ */
+const clean = str => {
+  const badCharacters = '.?:[]()!^$*+\\/'
+    .split('')
+    .map(s => `\\${s}`)
+    .join('|');
 
-    <h3> </h3>
+  return str.replace(RegExp(`(${badCharacters})`, 'g'), '\\$1');
+};
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+// export
+export default clean;
+</code></pre>
+        </article>
+    </section>
 
 
 

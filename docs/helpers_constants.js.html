@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: helpers/multiJoin.js</title>
+    <title>JSDoc: Source: helpers/constants.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: helpers/multiJoin.js</h1>
+    <h1 class="page-title">Source: helpers/constants.js</h1>
 
     
 
@@ -27,37 +27,50 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @module Helpers
+ * @module Constants
  */
-import clean from './clean';
 
 /**
- * Multi-Join
- *
- * Flattens all arrays into one. Converts every item in the array to a string.
- * Cleans each item in the array. Joins each item in the array with a '|'.
- *
- * @param {Array | String | Number} joinable Any item(s) to join.
- * @returns {String} Joined joinable.
+ * @constant {Symbol} Start Denotes the start of a line to be parsed
  */
-const multiJoin = joinable => {
-  // string or a number, just return it as a string
-  if (typeof joinable === 'string' || typeof joinable === 'number') return clean(joinable.toString());
+const Start = Symbol('Start');
 
-  // as an array
-  if (Array.isArray(joinable)) {
-    let multiJoined = joinable.reduce((joined, item) => {
-      return [...joined, multiJoin(item)];
-    }, []);
+/**
+ * @constant {Symbol} End Denotes the end of a line to be parsed
+ */
+const End = Symbol('End');
 
-    return multiJoined.join('|');
-  }
+/**
+ * @constant {String[]} Numbers Positive integer set 0-9
+ */
+const Numbers = '0123456789'.split('');
 
-  // nothing else should be inside joinable
-  throw Error('{ joinable } only accepts strings, numbers, and arrays.');
-};
+/**
+ * @constant {String[]} LowerLetters Alphabet, lowercase
+ */
+const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-module.exports = multiJoin;
+/**
+ * @constant {String[]} LowerLetters Alphabet, uppercase
+ */
+const UpperLetters = LowerLetters.map(s => s.toUpperCase());
+
+/**
+ * @constant {String[]} LowerLetters Alphabet, lowercase and uppcase combined
+ */
+const Letters = [...LowerLetters, ...UpperLetters];
+
+/**
+ * @constant {Array} LowerLetters Alphabet, lowercase, uppercase, and numbers combined
+ */
+const AlphaNumeric = [...Letters, ...Numbers];
+
+/**
+ * @constant {String[]} LowerLetters Single and double quote
+ */
+const Quote = ['"', '\''];
+
+export { Start, End, Numbers, LowerLetters, UpperLetters, Letters, AlphaNumeric, Quote };
 </code></pre>
         </article>
     </section>

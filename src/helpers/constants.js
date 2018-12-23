@@ -1,19 +1,45 @@
+/**
+ * @module Constants
+ */
+
+/**
+ * @constant {Symbol} Start Denotes the start of a line to be parsed
+ */
 const Start = Symbol('Start');
+
+/**
+ * @constant {Symbol} End Denotes the end of a line to be parsed
+ */
 const End = Symbol('End');
+
+/**
+ * @constant {String[]} Numbers Positive integer set 0-9
+ */
 const Numbers = '0123456789'.split('');
+
+/**
+ * @constant {String[]} LowerLetters Alphabet, lowercase
+ */
 const LowerLetters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+/**
+ * @constant {String[]} LowerLetters Alphabet, uppercase
+ */
 const UpperLetters = LowerLetters.map(s => s.toUpperCase());
+
+/**
+ * @constant {String[]} LowerLetters Alphabet, lowercase and uppcase combined
+ */
 const Letters = [...LowerLetters, ...UpperLetters];
+
+/**
+ * @constant {Array} LowerLetters Alphabet, lowercase, uppercase, and numbers combined
+ */
 const AlphaNumeric = [...Letters, ...Numbers];
+
+/**
+ * @constant {String[]} LowerLetters Single and double quote
+ */
 const Quote = ['"', '\''];
 
-module.exports = {
-  Start,
-  End,
-  Numbers,
-  LowerLetters,
-  UpperLetters,
-  Letters,
-  AlphaNumeric,
-  Quote,
-};
+export { Start, End, Numbers, LowerLetters, UpperLetters, Letters, AlphaNumeric, Quote };
