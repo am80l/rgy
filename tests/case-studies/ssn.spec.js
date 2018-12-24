@@ -3,7 +3,8 @@ import { Start, End, Numbers } from '../../src/helpers/constants.js';
 import Range from '../../src/helpers/range';
 
 /*
-  Subject: Social Security Numbers
+  Subject: Social Security Numbers - Follows the post-2011 randomization regulations
+         https://www.ssa.gov/employer/randomization.html
 
   - RegEx -
   ^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$
@@ -59,65 +60,14 @@ const invalid = [
   '698-0795286',
   '69820795286'];
 
-// 12/23/2018
-// takes in poop array and reverses it (reverse pooping)
-// IF I WAS A GIRL FOR A DAY -DABES
-// * I'd be sooo horny for dick like i would prbly
-//  have my butthole full of dick all day
-//    tits out alikke all day for the boyss
-// * I'd be so slutty
-// takes in a butthole and returns an asshole
-
+// Padding to ensure each of the three groups have enough digits
 const PadLeftZero = n => s => {
   s = s.toString();
-
   while (s.length < n) {
     s = '0' + s;
   }
   return s;
 };
-//
-
-
-// PadLeftZero(4)('1');
-// PadLeftZero(4, '1')
-
-// [1,2,3,4,5].map(s =>);
-
-// // anon func way
-// const PadLeftZeroRetro = function (n) {
-//   return function (s) {
-//     while (s.length <= n) {
-//       s = '0' + s;
-//     }
-//     return s;
-//   };
-// };
-
-// const PadLeftGroup1 = function (n) {
-//   if ((n + '').length === 1) {
-//     return '00' + n;
-//   }
-//   else if ((n + '').length === 2) {
-//     return '0' + n;
-//   }
-//   else return n;
-// };
-
-// const PadLeftGroup2 = n => ((n + '').length === 1 ? '0' + n : '' + n);
-
-// const PadLeftGroup3 = function (n) {
-//   if ((n + '').length === 1) {
-//     return '000' + n;
-//   }
-//   else if ((n + '').length === 2) {
-//     return '00' + n;
-//   }
-//   else if ((n + '').length === 3) {
-//     return '0' + n;
-//   }
-//   else return n;
-// };
 
 // Match: Any 3 numbers
 const Match3Numbers = { any: [...Range(1, 665), ...Range(667, 899)].map(PadLeftZero(3)) };
@@ -138,13 +88,6 @@ const RgySsn = Rgy([
   },
   End,
 ]);
-
-// TODO: Put in these conditions
-// SSA will not issue SSNs beginning with the number “9”.
-// SSA will not issue SSNs beginning with the number “666” in positions 1 – 3.
-// SSA will not issue SSNs beginning with the number “000” in positions 1 – 3.
-// SSA will not issue SSNs with the number “00” in positions 4 – 5.
-// SSA will not issue SSNs with the number “0000” in positions 6 – 9
 
 describe('Case Study: Social Security Numbers', () => {
   describe('Valid Social Security Numbers', () => {
