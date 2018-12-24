@@ -7,15 +7,15 @@ import Range from '../../src/helpers/range';
 
   - RegEx -
   ^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$
-  
+
   - Matches -
   555-55-5555
 */
 
 const valid = [
-  '490-26-5398', 
-  '304-22-3576', 
-  '452-76-2575', 
+  '490-26-5398',
+  '304-22-3576',
+  '452-76-2575',
   '325-22-4183',
   '605-25-6087',
   '142-82-0285',
@@ -59,21 +59,81 @@ const invalid = [
   '698-0795286',
   '69820795286'];
 
-// Match: Any 1 numbers
-const Match1Numbers = { any: Range(0, 8), length: 1 };
+// 12/23/2018
+// takes in poop array and reverses it (reverse pooping)
+// IF I WAS A GIRL FOR A DAY -DABES
+// * I'd be sooo horny for dick like i would prbly
+//  have my butthole full of dick all day
+//    tits out alikke all day for the boyss
+// * I'd be so slutty
+// takes in a butthole and returns an asshole
+
+const PadLeftZero = n => s => {
+  s = s.toString();
+
+  while (s.length < n) {
+    s = '0' + s;
+  }
+  return s;
+};
+//
+
+
+// PadLeftZero(4)('1');
+// PadLeftZero(4, '1')
+
+// [1,2,3,4,5].map(s =>);
+
+// // anon func way
+// const PadLeftZeroRetro = function (n) {
+//   return function (s) {
+//     while (s.length <= n) {
+//       s = '0' + s;
+//     }
+//     return s;
+//   };
+// };
+
+// const PadLeftGroup1 = function (n) {
+//   if ((n + '').length === 1) {
+//     return '00' + n;
+//   }
+//   else if ((n + '').length === 2) {
+//     return '0' + n;
+//   }
+//   else return n;
+// };
+
+// const PadLeftGroup2 = n => ((n + '').length === 1 ? '0' + n : '' + n);
+
+// const PadLeftGroup3 = function (n) {
+//   if ((n + '').length === 1) {
+//     return '000' + n;
+//   }
+//   else if ((n + '').length === 2) {
+//     return '00' + n;
+//   }
+//   else if ((n + '').length === 3) {
+//     return '0' + n;
+//   }
+//   else return n;
+// };
+
+// Match: Any 3 numbers
+const Match3Numbers = { any: [...Range(1, 665), ...Range(667, 899)].map(PadLeftZero(3)) };
 
 // Match: Any 2 numbers
-const Match2Numbers = { any: Numbers, length: 2 };
+const Match2Numbers = { any: Range(1, 99).map(PadLeftZero(2)) };
 
 // Match: Any 4 numbers
-const Match4Numbers = { any: Numbers, length: 4 };
+const Match4Numbers = { any: Range(1, 9999).map(PadLeftZero(4)) };
 
 // @RGY
 const RgySsn = Rgy([
   Start,
   {
     options: [
-      [Match1Numbers, Match2Numbers, { any: '-' }, Match2Numbers, { any: '-' }, Match4Numbers],
+      [Match3Numbers, { any: '-' }, Match2Numbers, { any: '-' }, Match4Numbers],
     ],
   },
   End,
